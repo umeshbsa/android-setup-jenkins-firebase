@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:text="Wiki sample"
+        android:text="Jenkins Setup"
         android:textColor="@color/colorPrimary"
         android:textSize="15dp" />
 
