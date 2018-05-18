@@ -12,7 +12,8 @@
 ```
 **Step 2: Setup Jenkins Profile**
 * Go to browser and open `localhost:8080`. Jenkins open login form with this
-`/var/lib/jenkins/secrets/initialAdminPassword. Please open terminal and type this on terminal`
+`/var/lib/jenkins/secrets/initialAdminPassword`
+* Please open terminal and type this on terminal
 ```java
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
