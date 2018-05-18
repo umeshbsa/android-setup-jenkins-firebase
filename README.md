@@ -78,7 +78,8 @@ ur
   * Build
     * Select `Invoke Gradle script` from `App build step` from dropdown.
     * Enable `Invoke Gradle` with `Gradle Version` - `Gradle 4.4
-    * Enter `Task` - `clean build --stacktrace --debug`
+    * Enter `Task` - `clean build --stacktrace --debug`<br/>
+    <img src="https://github.com/umeshbsa/android-setup-jenkins-automation/blob/master/jenkins0.png"/><br/>
   * Post-build Actions
     * Select `Archive the artifacts` from `Add post-build action` dropdown  
     * `	Files to archive` - `**/*.apk` // It will be show error but don't worry.
@@ -91,9 +92,10 @@ ur
     * Add HockeyApp `API Token` - `46c642196f212ca00d32d87514fa98c8`
     * Enable `Upload App` from `Upload Method`
     * `	App File (.ipa, .app.zip, .apk)` - `**/*.apk`
-    * Enable `Allow Download`
+    * Enable `Allow Download`<br/>
+    <img src="https://github.com/umeshbsa/android-setup-jenkins-automation/blob/master/jenkins1.png"/><br/>
  * Apply and save.
- 
+
 **Step 6: Build Now**
  * Go to Jenkins Home page
  * Click on `Build Now`. It will take few minutes
