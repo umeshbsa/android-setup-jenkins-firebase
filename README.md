@@ -1,4 +1,4 @@
-#### Jenkins setup on Ubuntu with HockeyApp
+## Jenkins setup on Ubuntu with HockeyApp
 
 **Step 1: Install Jenkins on Ubuntu**
 
