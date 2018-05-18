@@ -12,15 +12,13 @@
 ```
 **Step 2: Setup Jenkins Profile**
 * Go to browser and open `localhost:8080`. Jenkins open login form with this
-`/var/lib/jenkins/secrets/initialAdminPassword. Please open terminal and type this on terminal
+`/var/lib/jenkins/secrets/initialAdminPassword. Please open terminal and type this on terminal`
 ```java
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
 and pressed enter. Terminal show password please copy terminal password and paste jenkins form and click setup.
-
-* Now after that Jenkins setup all plugin which have required. So please wait some time and after completed jenkins plugins setup go to next.
-
-* Now jenkins open form page. Plase fill all field like `username`, `password`, and `email` ext. After that Jenkins open Home page where you have create job
+* Now after that, Jenkins setup all plugin which have required. So please wait some time and after completed jenkins plugins  go to next.
+* Now jenkins open form page. Please fill all field like `username`, `password`, and `email` ext. After that Jenkins open Home page where you have create job
 
 **Step 3: Setup Jenkins Configure System**
 * Go to `manage Jenkins` from jenkins home page. Your URL is `http://localhost:8080/manage`.
