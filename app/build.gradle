@@ -12,10 +12,34 @@ android {
         applicationId "com.app.wiki"
         minSdkVersion 15
         targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.2"
+    }
+    flavorDimensions "default"
+    signingConfigs {
+        release {
+            storeFile file("key_store.jks")
+            storePassword "123456"
+            keyAlias "key0"
+            keyPassword "123456"
+        }
     }
 
+    productFlavors {
+        free {
+            applicationId "com.app.free"
+            versionName "1.1"
+            versionCode 1
+            signingConfig signingConfigs.release
+        }
+
+        money {
+            applicationId "com.app.money"
+            versionName "1.1"
+            versionCode 1
+            signingConfig signingConfigs.release
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
