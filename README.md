@@ -64,7 +64,7 @@ and pressed enter. Terminal show password please copy terminal password and past
   * Check Enable `Install automatically`
   * Set gradle version `Gradle 4.4`
 * Click apply and save.
-ur 
+
 **Step 5: Create Job**
 * Click on `New Item` from Jenkins Home Page.
 * Now `Enter an item name` Example. `My First Android Project`
