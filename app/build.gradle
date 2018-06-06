@@ -5,33 +5,15 @@ project.ext {
     retrofitVersion = "2.0.2"
     okhttpVersion = "3.2.0"
 }
-
-ext.versionMajor = 1
-ext.versionMinor = 2
-
-// Will return "1.2" in this example
-def computeVersionName() {
-    // Basic <major>.<minor> version name
-    return String.format('%d.%d', versionMajor, versionMinor)
-}
-
-// Will return 120042 for Jenkins build #42
-def computeVersionCode() {
-    // Major + minor + Jenkins build number (where available)
-    return (versionMajor * 100000)
-    +(versionMinor * 10000)
-    +Integer.valueOf(System.env.BUILD_NUMBER ?: 0)
-}
-
-
+def jenkinsBuild = System.getenv("BUILD_NUMBER") ?: "10"
 android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.app.wiki"
         minSdkVersion 15
         targetSdkVersion 27
-        versionName computeVersionName()
-        versionCode computeVersionCode()
+        versionCode jenkinsBuild.toInteger()
+        versionName "1."+ versionCode
     }
     flavorDimensions "default"
     signingConfigs {
@@ -46,15 +28,15 @@ android {
     productFlavors {
         free {
             applicationId "com.app.free"
-            versionName computeVersionName()
-            versionCode computeVersionCode()
+            versionCode jenkinsBuild.toInteger()
+            versionName "1."+ versionCode
             signingConfig signingConfigs.release
         }
 
         money {
             applicationId "com.app.money"
-            versionName computeVersionName()
-            versionCode computeVersionCode()
+            versionCode jenkinsBuild.toInteger()
+            versionName "1."+ versionCode
             signingConfig signingConfigs.release
         }
     }
