@@ -1,34 +1,43 @@
 apply plugin: 'com.android.application'
-
-
 project.ext {
     supportAndroidVersion = "27.1.1"
     daggerVersion = "2.13"
     retrofitVersion = "2.0.2"
     okhttpVersion = "3.2.0"
-
-    devVersionCode = 0
-    releaseVersionCode = 0
-}
-
-def getReleaseVersionCode() {
-    def version = project.releaseVersionCode + 1
-    project.releaseVersionCode = version
-    println sprintf("Returning version %d", version)
-    return version
-}
-
-def getDevVersionCode() {
-    def version = project.devVersionCode + 1
-    project.devVersionCode = version
-    println sprintf("Returning version %d", version)
-    return version
 }
 
 
-def getLastVersioName(versionCode) {
-    return "0.0." + versionCode
+def _versionCode = 0
+def versionPropsFile = file('version.properties')
+def Properties versionProps = new Properties()
+if (versionPropsFile.exists())
+    versionProps.load(new FileInputStream(versionPropsFile))
+def _patch = (versionProps['PATCH'] ?: "0").toInteger() + 1
+def _major = (versionProps['MAJOR'] ?: "0").toInteger()
+def _minor = (versionProps['MINOR'] ?: "0").toInteger()
+List<String> runTasks = gradle.startParameter.getTaskNames();
+def value = 0
+for (String item : runTasks)
+    if (item.contains("assembleRelease")) {
+        value = 1;
+    }
+_versionCode = (versionProps['VERSION_CODE'] ?: "0").toInteger() + value
+if (_patch == 99) {
+    _patch = 0
+    _minor = _minor + 1
 }
+if (_major == 99) {
+    _major = 0
+    _major = _major + 1
+}
+
+versionProps['MAJOR'] = _major.toString()
+versionProps['MINOR'] = _minor.toString()
+versionProps['PATCH'] = _patch.toString()
+versionProps['VERSION_CODE'] = _versionCode.toString()
+versionProps.store(versionPropsFile.newWriter(), null)
+def _versionName = "${_major}.${_versionCode}.${_minor}.${_patch}"
+
 
 android {
     compileSdkVersion 27
@@ -52,15 +61,15 @@ android {
     productFlavors {
         free {
             applicationId "com.app.free"
-            versionCode getDevVersionCode()
-            versionName getLastVersioName(project.devVersionCode)
+            versionCode _versionCode
+            versionName _versionName
             signingConfig signingConfigs.release
         }
 
         money {
             applicationId "com.app.money"
-            versionCode getDevVersionCode()
-            versionName getLastVersioName(project.devVersionCode)
+            versionName "1.1"
+            versionCode 1
             signingConfig signingConfigs.release
         }
     }
