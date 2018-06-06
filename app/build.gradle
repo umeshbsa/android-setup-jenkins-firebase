@@ -5,14 +5,14 @@ project.ext {
     retrofitVersion = "2.0.2"
     okhttpVersion = "3.2.0"
 }
-def jenkinsBuild = System.getenv("BUILD_NUMBER") ?: "10"
+def jenkinsBuild = System.getenv("BUILD_NUMBER")
 android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.app.wiki"
         minSdkVersion 15
         targetSdkVersion 27
-        versionCode jenkinsBuild.toInteger()
+        versionCode jenkinsBuild
         versionName "1."+ versionCode
     }
     flavorDimensions "default"
@@ -28,14 +28,14 @@ android {
     productFlavors {
         free {
             applicationId "com.app.free"
-            versionCode jenkinsBuild.toInteger()
+            versionCode jenkinsBuild
             versionName "1."+ versionCode
             signingConfig signingConfigs.release
         }
 
         money {
             applicationId "com.app.money"
-            versionCode jenkinsBuild.toInteger()
+            versionCode jenkinsBuild
             versionName "1."+ versionCode
             signingConfig signingConfigs.release
         }
