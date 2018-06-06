@@ -6,42 +6,22 @@ project.ext {
     okhttpVersion = "3.2.0"
 }
 
+ext.versionMajor = 1
+ext.versionMinor = 2
 
-def _versionCode = 0
-def versionPropsFile = file('version.properties')
-def Properties versionProps = new Properties()
-if (versionPropsFile.exists())
-    versionProps.load(new FileInputStream(versionPropsFile))
-
-
-/*
-def _patch = (versionProps['PATCH'] ?: "0").toInteger() + 1
-def _major = (versionProps['MAJOR'] ?: "0").toInteger()
-def _minor = (versionProps['MINOR'] ?: "0").toInteger()
-List<String> runTasks = gradle.startParameter.getTaskNames();
-def value = 0
-for (String item : runTasks)
-    if (item.contains("assembleRelease")) {
-        value = 1;
-    }*/
-
-
-_versionCode = (versionProps['VERSION_CODE'] ?: "0").toInteger() + 1
-/*if (_patch == 99) {
-    _patch = 0
-    _minor = _minor + 1
+// Will return "1.2" in this example
+def computeVersionName() {
+    // Basic <major>.<minor> version name
+    return String.format('%d.%d', versionMajor, versionMinor)
 }
-if (_major == 99) {
-    _major = 0
-    _major = _major + 1
-}*/
 
-/*versionProps['MAJOR'] = _major.toString()
-versionProps['MINOR'] = _minor.toString()
-versionProps['PATCH'] = _patch.toString()*/
-versionProps['VERSION_CODE'] = _versionCode.toString()
-versionProps.store(versionPropsFile.newWriter(), null)
-def _versionName = "0.0."+"${_versionCode}"
+// Will return 120042 for Jenkins build #42
+def computeVersionCode() {
+    // Major + minor + Jenkins build number (where available)
+    return (versionMajor * 100000)
+    +(versionMinor * 10000)
+    +Integer.valueOf(System.env.BUILD_NUMBER ?: 0)
+}
 
 
 android {
@@ -50,8 +30,8 @@ android {
         applicationId "com.app.wiki"
         minSdkVersion 15
         targetSdkVersion 27
-        versionCode 2
-        versionName "1.2"
+        versionName computeVersionName()
+        versionCode computeVersionCode()
     }
     flavorDimensions "default"
     signingConfigs {
@@ -66,15 +46,15 @@ android {
     productFlavors {
         free {
             applicationId "com.app.free"
-            versionCode _versionCode
-            versionName _versionName
+            versionName computeVersionName()
+            versionCode computeVersionCode()
             signingConfig signingConfigs.release
         }
 
         money {
             applicationId "com.app.money"
-            versionName "1.1"
-            versionCode 1
+            versionName computeVersionName()
+            versionCode computeVersionCode()
             signingConfig signingConfigs.release
         }
     }
