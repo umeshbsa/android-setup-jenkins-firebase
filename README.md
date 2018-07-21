@@ -86,19 +86,19 @@ and pressed enter. Terminal show password please copy terminal password and past
     ```java 
        clean assembleDebug --stacktrace
     ```
-Script to create all release apk: 
+    Script to create all release apk: 
 
-clean assembleRelease --stacktrace
-
-Script to create selected product flavor debug apk:
-
-clean assembleCashpassDebug assembleCstoreDebug assembleCumoneyDebug assembleFredmeyerDebug assembleKrogerDebug assembleNewgendebug assembleRalphsDebug assembleRapidDebug assembleSmmexpressDebug assembleSoleDebug assembleSpeedycashDebug --stacktrace
-
-
-Script to create one release apk:
-
-clean assembleCashpassRelease --stacktrace
-
+    ```java
+      clean assembleRelease --stacktrace
+    ```
+    Script to create selected product flavor debug apk:
+    ```java 
+       clean assembleTest1Debug assembleTest2Debug --stacktrace
+    ```
+   Script to create one release apk:
+   ```java
+   clean assembleTest1Release --stacktrace
+   ```
     
     <img src="https://github.com/umeshbsa/android-setup-jenkins-automation/blob/master/jenkins0.png"/><br/>
   * Post-build Actions
