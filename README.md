@@ -80,7 +80,7 @@ and pressed enter. Terminal show password please copy terminal password and past
     * Enable `Invoke Gradle` with `Gradle Version` - `Gradle 4.4
     * Enter `Task` - `clean build --stacktrace --debug`<br/>
 
-  * **Jenkins Script**
+  * **Jenkins Script in Task field**
     
     Script to create all debug apk: 
     ```java 
@@ -95,10 +95,10 @@ and pressed enter. Terminal show password please copy terminal password and past
     ```java 
        clean assembleTest1Debug assembleTest2Debug --stacktrace
     ```
-   Script to create one release apk:
-   ```java
-   clean assembleTest1Release --stacktrace
-   ```
+    Script to create one release apk:
+    ```java
+       clean assembleTest1Release --stacktrace
+    ```
     
     <img src="https://github.com/umeshbsa/android-setup-jenkins-automation/blob/master/jenkins0.png"/><br/>
   * Post-build Actions
