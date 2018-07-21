@@ -79,6 +79,27 @@ and pressed enter. Terminal show password please copy terminal password and past
     * Select `Invoke Gradle script` from `App build step` from dropdown.
     * Enable `Invoke Gradle` with `Gradle Version` - `Gradle 4.4
     * Enter `Task` - `clean build --stacktrace --debug`<br/>
+
+  * **Jenkins Script**
+    
+    Script to create all debug apk: 
+    ```java 
+       clean assembleDebug --stacktrace
+    ```
+Script to create all release apk: 
+
+clean assembleRelease --stacktrace
+
+Script to create selected product flavor debug apk:
+
+clean assembleCashpassDebug assembleCstoreDebug assembleCumoneyDebug assembleFredmeyerDebug assembleKrogerDebug assembleNewgendebug assembleRalphsDebug assembleRapidDebug assembleSmmexpressDebug assembleSoleDebug assembleSpeedycashDebug --stacktrace
+
+
+Script to create one release apk:
+
+clean assembleCashpassRelease --stacktrace
+
+    
     <img src="https://github.com/umeshbsa/android-setup-jenkins-automation/blob/master/jenkins0.png"/><br/>
   * Post-build Actions
     * Select `Archive the artifacts` from `Add post-build action` dropdown  
