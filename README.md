@@ -10,6 +10,12 @@
 3. sudo apt-get update
 4. sudo apt-get install jenkins
 ```
+* Uninstall Jenkins from Ubuntu
+  ```java
+  sudo apt-get remove --purge jenkins
+  ```
+
+
 **Step 2: Setup Jenkins Profile**
 * Go to browser and open `localhost:8080`. Jenkins open login form with this
 `/var/lib/jenkins/secrets/initialAdminPassword`
