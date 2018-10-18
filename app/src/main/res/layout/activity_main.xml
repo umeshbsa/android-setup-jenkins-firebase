@@ -24,7 +24,6 @@
                 android:textColor="@color/color_white"
                 android:textSize="15dp" />
 
-
             <TextView
                 android:id="@+id/tv_add"
                 android:layout_width="60dp"
