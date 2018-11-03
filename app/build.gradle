@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+
+
 project.ext {
     supportAndroidVersion = "27.1.1"
     daggerVersion = "2.13"
@@ -15,7 +17,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 27
         versionCode jenkinsBuild.toInteger()
-        versionName "1."+ versionCode
+        versionName "1." + versionCode
     }
     flavorDimensions "default"
     signingConfigs {
@@ -38,14 +40,14 @@ android {
         free {
             applicationId "com.app.free"
             versionCode jenkinsBuild.toInteger()
-            versionName "1."+ versionCode
+            versionName "1." + versionCode
             resValue "string", "app_name", "Free App"
         }
 
         money {
             applicationId "com.app.money"
             versionCode jenkinsBuild.toInteger()
-            versionName "1."+ versionCode
+            versionName "1." + versionCode
             resValue "string", "app_name", "Money App"
         }
     }
@@ -83,5 +85,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.google.code.gson:gson:2.8.0'
     implementation "com.android.support:appcompat-v7:$project.supportAndroidVersion"
+    implementation "com.android.support:recyclerview-v7:$project.supportAndroidVersion"
+    implementation "com.android.support:cardview-v7:$project.supportAndroidVersion"
 }

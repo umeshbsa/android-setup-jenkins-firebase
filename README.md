@@ -10,6 +10,12 @@
 3. sudo apt-get update
 4. sudo apt-get install jenkins
 ```
+* Uninstall Jenkins from Ubuntu
+  ```java
+  sudo apt-get remove --purge jenkins
+  ```
+
+
 **Step 2: Setup Jenkins Profile**
 * Go to browser and open `localhost:8080`. Jenkins open login form with this
 `/var/lib/jenkins/secrets/initialAdminPassword`
@@ -79,6 +85,27 @@ and pressed enter. Terminal show password please copy terminal password and past
     * Select `Invoke Gradle script` from `App build step` from dropdown.
     * Enable `Invoke Gradle` with `Gradle Version` - `Gradle 4.4
     * Enter `Task` - `clean build --stacktrace --debug`<br/>
+
+  * **Jenkins Script in Task field**
+    
+    Script to create all debug apk: 
+    ```java 
+       clean assembleDebug --stacktrace
+    ```
+    Script to create all release apk: 
+
+    ```java
+      clean assembleRelease --stacktrace
+    ```
+    Script to create selected product flavor debug apk:
+    ```java 
+       clean assembleTest1Debug assembleTest2Debug --stacktrace
+    ```
+    Script to create one release apk:
+    ```java
+       clean assembleTest1Release --stacktrace
+    ```
+    
     <img src="https://github.com/umeshbsa/android-setup-jenkins-automation/blob/master/jenkins0.png"/><br/>
   * Post-build Actions
     * Select `Archive the artifacts` from `Add post-build action` dropdown  
