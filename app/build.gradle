@@ -5,7 +5,9 @@ project.ext {
     retrofitVersion = "2.0.2"
     okhttpVersion = "3.2.0"
 }
+
 def jenkinsBuild = System.getenv("BUILD_NUMBER") ?: "1"
+
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -17,11 +19,18 @@ android {
     }
     flavorDimensions "default"
     signingConfigs {
-        release {
+        releaseConfig {
             storeFile file("key_store.jks")
             storePassword "123456"
             keyAlias "key0"
             keyPassword "123456"
+        }
+
+        debugConfig {
+            storeFile file("debug.keystore")
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
         }
     }
 
@@ -30,20 +39,44 @@ android {
             applicationId "com.app.free"
             versionCode jenkinsBuild.toInteger()
             versionName "1."+ versionCode
-            signingConfig signingConfigs.release
+            resValue "string", "app_name", "Free App"
         }
 
         money {
             applicationId "com.app.money"
             versionCode jenkinsBuild.toInteger()
             versionName "1."+ versionCode
-            signingConfig signingConfigs.release
+            resValue "string", "app_name", "Money App"
         }
     }
     buildTypes {
         release {
+            signingConfig signingConfigs.releaseConfig
+            minifyEnabled false
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            zipAlignEnabled true
+            resValue "string", "base_url", "https://ocelot.onlineportal.co/v1/"
+            resValue "string", "bank_settings_base_url", "https://ocelot.onlineportal.co/"
+            resValue "string", "buildType", "release"
+        }
+        debug {
+            signingConfig signingConfigs.debugConfig
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            zipAlignEnabled true
+            resValue "string", "base_url", "https://lynx.onlineportal.co/v1/"
+            resValue "string", "bank_settings_base_url", "https://lynx.onlineportal.co/"
+            resValue "string", "buildType", "debug"
+        }
+        production {
+            signingConfig signingConfigs.debugConfig
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            zipAlignEnabled true
+            resValue "string", "base_url", "https://lynx.onlineportal.co/v1/"
+            resValue "string", "bank_settings_base_url", "https://lynx.onlineportal.co/"
+            resValue "string", "buildType", "release"
         }
     }
 }
