@@ -1,3 +1,6 @@
+import java.util.regex.Matcher
+import java.util.regex.Pattern
+
 apply plugin: 'com.android.application'
 
 
@@ -19,57 +22,89 @@ android {
         versionCode jenkinsBuild.toInteger()
         versionName "1." + versionCode
     }
-    flavorDimensions "default"
-    signingConfigs {
-        releaseConfig {
-            storeFile file("key_store.jks")
-            storePassword "123456"
-            keyAlias "key0"
-            keyPassword "123456"
+
+    def appName = 'Jenkins POC'
+    flavorDimensions "jenkins"
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def name = appName + "_" + getCurrentFlavor() + "_" + variant.mergedFlavor.versionName + "_" +
+                            variant.mergedFlavor.versionCode + "_" +
+                            getDate() + ".apk";
+                    output.outputFileName = name
+                }
+            }
+
+        }
+        debug {
+            debuggable true
+        }
+    }
+
+    def primaryColor = '"#EFBF20"'
+    task(changeColor) {
+        if (project.hasProperty("color")) {
+            primaryColor = color;
+        }
+    }
+
+    def appIcon = '@mipmap/ic_launcher'
+    task(changeAppIcon) {
+        if (project.hasProperty("appicon")) {
+            appIcon = appicon;
+        }
+    }
+
+    task(changeAppName) {
+        if (project.hasProperty("appname")) {
+            appName = appname;
+        }
+    }
+
+    def appVersionCode = 1
+    task(versionCode) {
+        if (project.hasProperty("versioncode")) {
+            appVersionCode = Integer.parseInt(versioncode);;
+        }
+    }
+
+    def appVersionName = "1.0.0"
+    task(versionName) {
+        if (project.hasProperty("versionname")) {
+            appVersionName = versionname;
         }
     }
 
     productFlavors {
-        free {
-            applicationId "com.app.free"
-            versionCode jenkinsBuild.toInteger()
-            versionName "1." + versionCode
-            resValue "string", "app_name", "Free App"
+        development {
+            buildConfigField "String", "PRIMARY_COLOR", primaryColor
+            manifestPlaceholders = [
+                    appName: appName, appIcon: appIcon
+            ]
+            versionCode appVersionCode
+            versionName appVersionName
         }
-
-        money {
-            applicationId "com.app.money"
-            versionCode jenkinsBuild.toInteger()
-            versionName "1." + versionCode
-            resValue "string", "app_name", "Money App"
+        qa {
+            buildConfigField "String", "PRIMARY_COLOR", primaryColor
+            manifestPlaceholders = [
+                    appName: appName, appIcon: appIcon
+            ]
+            versionCode appVersionCode
+            versionName appVersionName
         }
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            debuggable false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            zipAlignEnabled true
-            resValue "string", "base_url", "https://ocelot.onlineportal.co/v1/"
-            resValue "string", "bank_settings_base_url", "https://ocelot.onlineportal.co/"
-            resValue "string", "buildType", "release"
-        }
-        debug {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            zipAlignEnabled true
-            resValue "string", "base_url", "https://lynx.onlineportal.co/v1/"
-            resValue "string", "bank_settings_base_url", "https://lynx.onlineportal.co/"
-            resValue "string", "buildType", "debug"
-        }
-        production {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            zipAlignEnabled true
-            resValue "string", "base_url", "https://lynx.onlineportal.co/v1/"
-            resValue "string", "bank_settings_base_url", "https://lynx.onlineportal.co/"
-            resValue "string", "buildType", "release"
-        }
+
+    lintOptions {
+        abortOnError false
+        disable 'MissingTranslation'
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
     }
 }
 
@@ -80,3 +115,26 @@ dependencies {
     implementation "com.android.support:recyclerview-v7:$project.supportAndroidVersion"
     implementation "com.android.support:cardview-v7:$project.supportAndroidVersion"
 }
+
+
+def getCurrentFlavor() {
+    Gradle gradle = getGradle()
+    String tskReqStr = gradle.getStartParameter().getTaskRequests().toString()
+    Pattern pattern;
+    pattern = Pattern.compile("assemble(\\w+)(Release|Debug)")
+    Matcher matcher = pattern.matcher(tskReqStr)
+    if (matcher.find()) {
+        return matcher.group(1).toLowerCase()
+    }
+    else {
+        println "NO MATCH FOUND"
+        return "";
+    }
+}
+
+def getDate() {
+    def date = new Date()
+    def formattedDate = date.format('yyyy-MM-dd')
+    return formattedDate
+}
+
