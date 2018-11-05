@@ -27,13 +27,6 @@ android {
             keyAlias "key0"
             keyPassword "123456"
         }
-
-        debugConfig {
-            storeFile file("debug.keystore")
-            storePassword "android"
-            keyAlias "androiddebugkey"
-            keyPassword "android"
-        }
     }
 
     productFlavors {
@@ -53,7 +46,6 @@ android {
     }
     buildTypes {
         release {
-            signingConfig signingConfigs.releaseConfig
             minifyEnabled false
             debuggable false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -63,7 +55,6 @@ android {
             resValue "string", "buildType", "release"
         }
         debug {
-            signingConfig signingConfigs.debugConfig
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             zipAlignEnabled true
@@ -72,7 +63,6 @@ android {
             resValue "string", "buildType", "debug"
         }
         production {
-            signingConfig signingConfigs.debugConfig
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             zipAlignEnabled true
