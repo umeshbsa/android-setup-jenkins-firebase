@@ -2,14 +2,15 @@
 
 **Step 1: Install Jenkins on Ubuntu**
 
-* Go to this url to get information about jenkins setup `https://wiki.jenkins.io/display/JENKINS/Installing+Jenkins+on+Ubuntu`
-*  Follow this instruction to install Jenkins on ubuntu.
-```java
-1. wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
-2. sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > 3. /etc/apt/sources.list.d/jenkins.list'
-3. sudo apt-get update
-4. sudo apt-get install jenkins
-```
+* Go to this url to get information about jenkins setup https://jenkins.io/doc/book/installing/#debian-ubuntu
+* Click on `latest stable Jenkins WAR file` to download war file in WAR section.
+* Open terminal and go to downloaded war folder and Run this command `java -jar jenkins.war`.
+  ```java
+     username:~$ cd Downloads/  
+     username:~/Downloads$ java -jar jenkins.war
+
+     ```
+     
 * Uninstall Jenkins from Ubuntu
   ```java
   sudo apt-get remove --purge jenkins
