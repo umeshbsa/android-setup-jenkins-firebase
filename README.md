@@ -1,7 +1,7 @@
 ## Jenkins setup on Ubuntu with HockeyApp
 
 **Step 1: Install Jenkins on Ubuntu**
-
+* We have to setup Java JDK first with root environment. If you are not setup please go this url `https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-get-on-ubuntu-16-04`
 * Go to this url to get information about jenkins setup https://jenkins.io/doc/book/installing/#debian-ubuntu
 * Click on `latest stable Jenkins WAR file` to download war file in WAR section.
 * Open terminal and go to downloaded war folder and Run this command `java -jar jenkins.war`.
