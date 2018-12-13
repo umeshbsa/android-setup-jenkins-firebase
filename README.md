@@ -89,9 +89,9 @@ and pressed enter. Terminal show password please copy terminal password and past
 
   * **Jenkins Script in Build Section**
     * Select `Execute shell` and write this script in `Command` edit box. 
-     ```java
-        cd project_root_path(test_poc_jenkins)
-        /gradlew clean assembleTestDebug --stacktrace 
+     ```java       
+        ./gradlew clean assembleDevelopmentDebug --stacktrace  // for debug apk
+        ./gradlew clean assembleDevelopmentRelease --stacktrace  // for release apk, but you have to setup jks fine in app.gradle.
      ```
     <img src="https://github.com/umeshbsa/android-setup-jenkins-automation/blob/master/jenkins0.png"/><br/>
   * Post-build Actions
