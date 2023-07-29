@@ -2,28 +2,19 @@ import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 apply plugin: 'com.android.application'
-
-
-project.ext {
-    supportAndroidVersion = "27.1.1"
-    daggerVersion = "2.13"
-    retrofitVersion = "2.0.2"
-    okhttpVersion = "3.2.0"
-}
-
-def jenkinsBuild = System.getenv("BUILD_NUMBER") ?: "1"
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 33
     defaultConfig {
-        applicationId "com.app.wiki"
-        minSdkVersion 15
-        targetSdkVersion 27
-        versionCode jenkinsBuild.toInteger()
-        versionName "1." + versionCode
+        minSdkVersion 26
+        targetSdkVersion 33
     }
 
-    def appName = 'Jenkins POC'
+    def appName = 'Jenkins'
     flavorDimensions "jenkins"
 
     buildTypes {
@@ -46,56 +37,16 @@ android {
         }
     }
 
-    def primaryColor = '"#EFBF20"'
-    task(changeColor) {
-        if (project.hasProperty("color")) {
-            primaryColor = color;
-        }
-    }
-
-    def appIcon = '@mipmap/ic_launcher'
-    task(changeAppIcon) {
-        if (project.hasProperty("appicon")) {
-            appIcon = appicon;
-        }
-    }
-
-    task(changeAppName) {
-        if (project.hasProperty("appname")) {
-            appName = appname;
-        }
-    }
-
-    def appVersionCode = 1
-    task(versionCode) {
-        if (project.hasProperty("versioncode")) {
-            appVersionCode = Integer.parseInt(versioncode);;
-        }
-    }
-
-    def appVersionName = "1.0.0"
-    task(versionName) {
-        if (project.hasProperty("versionname")) {
-            appVersionName = versionname;
-        }
-    }
-
     productFlavors {
-        development {
-            buildConfigField "String", "PRIMARY_COLOR", primaryColor
-            manifestPlaceholders = [
-                    appName: appName, appIcon: appIcon
-            ]
-            versionCode appVersionCode
-            versionName appVersionName
+        dev {
+            applicationId "com.app.wiki.dev"
+            versionCode 1
+            versionName "1.0.0"
         }
         qa {
-            buildConfigField "String", "PRIMARY_COLOR", primaryColor
-            manifestPlaceholders = [
-                    appName: appName, appIcon: appIcon
-            ]
-            versionCode appVersionCode
-            versionName appVersionName
+            applicationId "com.app.wiki.qa"
+            versionCode 1
+            versionName "1.0.0"
         }
     }
 
@@ -111,9 +62,9 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.google.code.gson:gson:2.8.0'
-    implementation "com.android.support:appcompat-v7:$project.supportAndroidVersion"
-    implementation "com.android.support:recyclerview-v7:$project.supportAndroidVersion"
-    implementation "com.android.support:cardview-v7:$project.supportAndroidVersion"
+    implementation "androidx.appcompat:appcompat:1.0.0"
+    implementation "androidx.recyclerview:recyclerview:1.0.0"
+    implementation "androidx.cardview:cardview:1.0.0"
 }
 
 
