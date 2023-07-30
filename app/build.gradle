@@ -57,11 +57,6 @@ android {
         }
     }
 
-    repositories {
-        flatDir {
-            dirs 'libs'
-        }
-    }
     dexOptions {
         dexInProcess false
         javaMaxHeapSize = "4g"
@@ -75,7 +70,7 @@ android {
 
     productFlavors {
 
-        local {
+        dev {
             buildConfigField "String", "FILE_PROVIDER", '"com.app.wiki.provider"'
             applicationId 'com.app.wiki'
             versionCode 1
