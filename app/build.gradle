@@ -6,6 +6,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'com.google.firebase.appdistribution'
 
 android {
     compileSdkVersion 33
@@ -66,6 +67,13 @@ android {
         disable 'GoogleAppIndexingWarning'
         checkReleaseBuilds false
         abortOnError false
+    }
+
+
+    firebaseAppDistribution {
+        releaseNotes = "Test Notes"
+        serviceCredentialsFile = "$rootDir/seasonal-android-firebase.json"
+        groups="test"
     }
 
     productFlavors {

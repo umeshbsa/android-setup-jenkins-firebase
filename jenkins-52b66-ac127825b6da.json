@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "jenkins-52b66",
+  "private_key_id": "ac127825b6da225ba01a31ef939ab95307f2349d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCs963P7RpN0lYY\nmOWFV11gPnHQ/PkPT8vheOWimqvWCCODzibvRMyNsyiou2m/2LR2r13CqYBnw+tn\nNRYf01k6MKQOiVEIYGczDpRV3J0V85N/Yqm3mNnn9QdVd3TbXoqrt7+vuezbuUWe\nae0SHd6fpR+/ukeOKplFqXvOoIsufUIqlj0Pe4og+0VABPowDenAMzJ6tcW3iQ46\n6432KbS1x+gI8H8XlQS+adcpa0XYGvhoGfQ9YPp1eFxeYXSs3zO2gfChTEJvxkR2\nLrwOfPndfCP8ASl1cS4R1rc/MnHEkSZBJOxSLTHOtQ5LsiANSxevYrBxEtxngCzu\neekB+0ObAgMBAAECggEAFP9sZlWOX+ws74eANZPJjimGf6x2P9mcEp8uoXLNcYpD\nZXjdWSas/nbFdNZrnBKetdnMNBmHsREjvr+/E9YAewP0pp8c6ztoy9X1RAcoOsX7\nHffISrWPno0ser+pvAfaJcaEyrxzeKkhPn31fcGKiS7uj8P5c9TQDpjoosjynI39\nJl4sZJSB5KXjqHzOx8hfp/LcWMf9zxUSpN+tUH+srPl2d1lDL6pNCSYHYWedL+0y\nvDH1YGIl/S/eXEE/2fX9TXdPxbzh7J3GYxlKmmZm8H6QBqWVntmcMtqakqYC9CFR\nErvFUUdCUrGPsZQg/Ebqv+dTzlWauXLIOdDYjzyFIQKBgQDUcOXJOAvl+01tyHBH\nP7XW+kX/u2YxPseB/F+1K2fJjvOmKEH0cXEapojKCFidW0RhdEJoWDSxihGr+VGt\n6vNjwajp88KopZrhsRS78XXYAxkTYyw7pYklM8vA7O802yYpE6TR9qYTShUP8zBT\nVidQY+Ue9ON4pRc9NT1H/+RrtwKBgQDQbs2Uks5KZo4KfNfHg1sNOnR18cDjZkIS\nS5mMVXkIOAHWglj/fGQd+vMunIk+UYQAk6zDzssItzbz9mKpLhrxcCFR8C/m91sK\nMNclctf7Z6jvvNFx+y1PYmSgLOsmcpyhqjDyKrqdfWvKPyhD4sZeLbEwg7vGozbQ\nr4yb23EvPQKBgQC7WFCckeuURnky/pddjebLjeybKOVnOkjw7eJtP7kIfCOMfWYk\nrsIi0YhCOvgC1RDJrKA/qsHVa8BH29fXOyKm74sJvmkFFv4uWF7Dm53kAF9lxIim\nlUYL49Ck843EHBtcEDHC4/PzgNpwNXOBmrGS6HWPRkEwDM8gsEm5rAYBowKBgDhg\n8Eyy1Qf864jcsgUue699U0kf5lvcKh0Gw/bYm89kTuL2CRq6S95sJeFCyEDKDdmW\nGFIymmq2HDArQg6fAPyzpt+iB2MDH2YHRfrEMLW5GVIXkdOx7FSfubY10DlrIQD9\npxWqByZYaZKgOMT8D0okM9x6lY0qUsZp5a+20MvFAoGABiwzBie8ozQJONG6BCs9\n2eTbxaQEpqNzldXyGyzgGL8JzCEYwz+5vbQvi7Qbeew5a4FSYavMxnMiZ0JQdWd4\nYjRIgJtan7Sibfqh/UA97WqZBhyDGy5XxfDwVu2HsIx/9zgDgNQzm1z4fysJ7mWo\nQwa6PgVch8Gp7MHotKyBU6w=\n-----END PRIVATE KEY-----\n",
+  "client_email": "jenkins-firebase-poc@jenkins-52b66.iam.gserviceaccount.com",
+  "client_id": "102679741852600598199",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/jenkins-firebase-poc%40jenkins-52b66.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
